@@ -1,70 +1,72 @@
 # hap.pybake
 
-Landing page bisnis bakery rumahan hap.pybake, dengan arah visual **Hangat & Homemade**: cream, chocolate, terracotta, serif, dan fotografi produk yang hangat.
+A landing page for hap.pybake, a home bakery in Malang, Indonesia. The **Warm & Homemade** visual direction combines cream, chocolate, and terracotta colors with serif typography and warm product photography.
 
-## Menjalankan project
+## Getting started
 
-Gunakan Node.js >=22.23.4 dan npm >=9.6.5.
+Use Node.js >=22.23.4 and npm >=9.6.5.
 
 ```sh
 npm install
 npm run dev
 ```
 
-Alamat lokal project ini: http://localhost:4381. Port 4381 dipilih agar tidak bentrok dengan project lokal lain.
+The local development server runs at http://localhost:4381. Port 4381 avoids conflicts with other local projects.
 
 ```sh
-npm run check   # Diagnostik Astro dan TypeScript
-npm run build   # Diagnostik dan static production build ke dist/
-npm run preview # Preview production build
+npm run check   # Run Astro and TypeScript diagnostics
+npm run build   # Run diagnostics and create a static production build in dist/
+npm run preview # Preview the production build
 ```
 
-## Stack dan struktur
+## Stack and structure
 
-- Astro dengan static output; tanpa runtime React.
-- Tailwind CSS 4 via Vite plugin, dengan token dan gaya khusus di `src/styles/global.css`.
-- Lenis sebagai pengendali smooth wheel scroll dan navigasi anchor, disinkronkan dengan ticker GSAP.
-- GSAP + ScrollTrigger untuk entrance, parallax hero, reveal sekali per bagian, dan filter katalog.
-- Journey tiga adegan setelah hero: dapur → dibuat → dinikmati. CSS sticky dan timeline GSAP aktif mulai lebar 600px/tinggi 620px, atau lebar 360px/tinggi 740px. Panel preview aplikasi dan ponsel tinggi mendapat koreografi yang sama dengan komposisi responsif. Penanda bab dan progress mengikuti scroll, termasuk saat scroll dibalik.
-- Pada layar pendek dan tanpa JavaScript, semua adegan tetap terbaca vertikal. Reduced motion memakai fade singkat tanpa sticky/zoom. Tautan langsung ke menu tersedia.
-- Font Cormorant Garamond dan DM Sans disimpan lokal melalui Fontsource, tanpa request ke Google Fonts.
-- `src/pages/index.astro`: halaman dan konten.
-- `src/data/products.ts`: kategori, produk, nomor WhatsApp, template pesan per menu, serta tautan profil Instagram.
-- `src/scripts/main.ts`: scroll, animasi, filter, dan navigasi ponsel.
-- `src/assets/images/`: foto konsep dalam format WebP.
+- Astro with static output and no React runtime.
+- Tailwind CSS 4 through the Vite plugin, with custom tokens and styles in `src/styles/global.css`.
+- Lenis for smooth wheel scrolling and anchor navigation, synchronized with the GSAP ticker.
+- GSAP and ScrollTrigger for entrance animations, hero parallax, section reveals, and catalog filtering.
+- A three-scene journey follows the hero: kitchen → preparation → sharing. CSS sticky positioning and the GSAP timeline activate at viewport widths of at least 600px and heights of at least 620px, or widths of at least 360px and heights of at least 740px. The app preview and tall phones share the same choreography with responsive layouts. Chapter markers and progress follow scrolling in both directions.
+- On shorter screens and without JavaScript, the scenes remain readable in a vertical layout. Reduced motion uses brief fades without sticky positioning or zoom. A direct link to the menu is available.
+- Cormorant Garamond and DM Sans fonts are served locally through Fontsource, with no requests to Google Fonts.
+- `src/pages/index.astro`: page markup and content.
+- `src/data/products.ts`: categories, products, WhatsApp number, product-specific message templates, and the Instagram profile link.
+- `src/data/images.ts`: imported image metadata used by Astro's `Image` component.
+- `src/scripts/main.ts`: scrolling, animations, filters, and mobile navigation.
+- `src/assets/images/`: concept photography in WebP format. Astro generates optimized responsive image sizes during the build.
 
-## Konten bisnis
+## Business content
 
-Sumber referensi: https://www.instagram.com/hap.pybake/ dan posting produk yang ID-nya dicatat pada data katalog. Nama produk, lokasi Malang, dan kutipan bio mengikuti profil yang dibaca saat pengerjaan. Copy lain merupakan usulan editorial.
+References include the [hap.pybake Instagram profile](https://www.instagram.com/hap.pybake/) and product posts whose IDs are recorded in the catalog data. Product names, the Malang location, and the quoted bio reflect the profile reviewed during development. Other copy is proposed editorial content.
 
-Harga, stok, lead time, pembayaran, dan pengiriman tidak diasumsikan. CTA pemesanan membuka WhatsApp di nomor **+62 813-5933-8291**. Foto dan tautan pemesanan setiap menu mengisi pesan awal sesuai nama produk; pengunjung tetap memeriksa dan mengirim pesannya sendiri. Instagram hanya digunakan untuk cerita dapur dan tautan profil di footer.
+Prices, stock, lead times, payment methods, and delivery arrangements are left for the business to confirm. Order CTAs open WhatsApp at **+62 813-5933-8291**. Each product photo and order link prepares a message containing the product name; visitors review and send the message themselves. Instagram links are limited to the kitchen story and the footer profile link.
 
-Semua gambar produk saat ini **ilustrasi AI**, bukan dokumentasi produk asli. Informasi ini juga ditampilkan dekat katalog. Ganti sebelum peluncuran bisnis apabila sudah ada foto produk resmi. Detail prompt dan asal aset tersedia di `ASSETS.md`.
+All current product images are **AI-generated illustrations**, rather than photographs of the actual products. This is also disclosed near the catalog. Replace them with official product photography before the business launch when available. Asset origins and generation prompts are documented in `ASSETS.md`.
 
-## Interaksi dan aksesibilitas
+## Interactions and accessibility
 
-- Filter kategori memakai tombol dengan `aria-pressed` dan jumlah hasil live.
-- Navigasi ponsel mendukung Escape dan mengembalikan fokus ke tombol.
-- Semua konten tersedia di HTML; katalog dan tautan tetap dapat dipakai tanpa JavaScript.
-- Preferensi `prefers-reduced-motion` mematikan smooth scrolling, parallax, dan pergeseran elemen; konten tetap terlihat.
-- Touch scrolling memakai perilaku sentuh native, sementara wheel dan anchor memakai Lenis pada mode animasi normal.
-- Hover dibatasi ke pointer yang mendukung hover, font lokal, gambar lazy-loaded selain hero.
+- Category filters use buttons with `aria-pressed` and a live result count.
+- Mobile navigation supports Escape and returns focus to the menu button.
+- Anchor navigation moves keyboard focus to the destination content without adding it to the regular Tab sequence.
+- All content is available in HTML; the catalog and links remain usable without JavaScript.
+- The `prefers-reduced-motion` preference disables smooth scrolling, parallax, and element movement while keeping content visible.
+- Touch scrolling uses native browser behavior; wheel scrolling and anchor navigation use Lenis when motion is enabled.
+- Hover effects are limited to pointers that support hover. Fonts are served locally, and images below the hero load lazily. The pinned catalog loads its cards on entry so they are ready as scrolling reveals them.
 
-## Sebelum publikasi
+## Before publishing
 
-Pastikan copy usaha, foto asli, varian, harga, dan alur pesanan bersama pemilik. Tambahkan domain/canonical URL dan URL gambar Open Graph absolut setelah domain tersedia. Uji rasa scrolling pada ponsel sungguhan; emulasi desktop hanya memverifikasi layout responsif.
+Confirm the business copy, product photography, variants, pricing, and ordering process with the owner. Add a canonical URL and an absolute Open Graph image URL once the domain is available. Test the scrolling experience on a physical phone; desktop emulation only verifies the responsive layout.
 
-Project disiapkan untuk pengembangan lokal. Tidak ada deployment atau akun layanan eksternal yang dibuat.
+The project is configured for local development and static builds. No hosting deployment or external service account has been created.
 
-## Koreografi seluruh halaman
+## Page animation choreography
 
-- Hero: entrance judul per kata, entrance navigasi dan CTA, zoom foto + pergeseran teks saat scroll, detail panah bergerak lembut.
-- Seluruh halaman: progress scroll di atas dan underline navigasi aktif.
-- Journey: pergantian foto dan teks, zoom detail, pergeseran adegan, indikator tiga bab.
-- Katalog: pada layar >=600px dan tinggi >=760px, scroll vertikal menggerakkan enam produk secara horizontal di satu panggung. Filter membangun ulang jarak scroll dan mempertahankan pengunjung di menu. Pada layout biasa, foto memakai reveal masking dan caption menyusul.
-- Cerita: polaroid bergerak dan berotasi mengikuti scroll, foto terbuka lewat masking, judul per kata, teks berurutan, stempel ikut berputar.
-- Cara pesan: garis tumbuh mengikuti scroll, angka/judul/deskripsi masuk berurutan, ikon berputar saat masuk.
-- Penutup: bidang terracotta mengembang dari bentuk bulat, judul terbuka per kata, CTA masuk, ornamen berputar.
-- Footer: kontak masuk berurutan dan wordmark besar muncul mengikuti scroll.
-- Pointer presisi: label tombol magnetik. Efek ini tidak mengambil alih target klik atau navigasi keyboard.
-- Mode reduced motion menonaktifkan pin, zoom, pergeseran, dan loop dekoratif. Heading tetap memiliki nama aksesibel yang utuh meski kata visualnya dipisah.
+- Hero: word-by-word title entrance, navigation and CTA entrances, photo zoom and text parallax on scroll, and subtle arrow movement.
+- Entire page: a progress bar at the top and an underline for the active navigation link.
+- Journey: photo and text transitions, detail zoom, scene movement, and three chapter indicators.
+- Catalog: at viewport widths of at least 600px and heights of at least 760px, vertical scrolling moves six products horizontally across a pinned stage. Filtering rebuilds the scroll distance and keeps visitors at the menu. In the regular layout, masked photo reveals are followed by captions.
+- Story: a polaroid moves and rotates with scrolling, the photo is revealed through a mask, the title appears word by word, paragraphs enter in sequence, and the seal rotates.
+- Ordering: lines grow with scrolling, numbers, titles, and descriptions enter in sequence, and symbols rotate on entry.
+- Closing section: the terracotta surface expands from a rounded shape, the title appears word by word, the CTA enters, and the decorative bread illustration rotates.
+- Footer: contact links enter in sequence, and the oversized wordmark rises into view with scrolling.
+- Precision pointers: button labels respond magnetically while click targets and keyboard navigation remain stable.
+- Reduced motion disables pinning, zoom, movement, and decorative loops. Headings retain complete accessible names even when their visual text is split into individual words.

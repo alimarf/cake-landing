@@ -54,7 +54,7 @@ All current product images are **AI-generated illustrations**, rather than photo
 
 ## Before publishing
 
-Confirm the business copy, product photography, variants, pricing, and ordering process with the owner. Add a canonical URL and an absolute Open Graph image URL once the domain is available. Test the scrolling experience on a physical phone; desktop emulation only verifies the responsive layout.
+Confirm the business copy, product photography, variants, pricing, and ordering process with the owner. The canonical URL and absolute Open Graph image URL use `https://happybake.vercel.app`, configured through `site` in `astro.config.mjs`. Update this setting if the production domain changes. Astro generates a 1200 × 630 JPEG social preview from the hero image at build time; PNG and SVG favicons and an Apple touch icon are included. Test the scrolling experience on a physical phone; desktop emulation only verifies the responsive layout.
 
 The project is configured for local development and static builds. No hosting deployment or external service account has been created.
 

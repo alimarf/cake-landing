@@ -1,0 +1,157 @@
+---
+import '../styles/global.css';
+import { Image } from 'astro:assets';
+import { images } from '../data/images';
+import BreadSketch from '../components/BreadSketch.astro';
+import { categories, instagram, products, whatsapp, whatsappLink, whatsappNumber } from '../data/products';
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#fff7e9" />
+    <meta name="description" content="Roti, kue, dan camilan homemade dari hap.pybake di Malang. Jelajahi menu dan pesan langsung melalui WhatsApp." />
+    <meta property="og:title" content="hap.pybake — Dari dapur rumah, untuk hari manismu." />
+    <meta property="og:description" content="Roti, kue, dan camilan rumahan dari Malang. Temukan teman untuk jeda manismu." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>hap.pybake — Manisnya dari rumah.</title>
+  </head>
+  <body>
+    <div class="page-progress" aria-hidden="true"><span></span></div>
+    <a class="skip-link" href="#main">Langsung ke konten</a>
+    <header class="site-header">
+      <div class="header-inner wrap flex items-center justify-between">
+        <a href="#home" class="wordmark" aria-label="hap.pybake, kembali ke awal">hap.pybake<span class="brand-smile" aria-hidden="true"></span></a>
+        <nav aria-label="Navigasi utama" class="desktop-nav items-center gap-9">
+          <a href="#menu">Menu Kami</a><a href="#journey">Cerita Dapur</a><a href="#cara-pesan">Cara Pesan</a>
+        </nav>
+        <a href={whatsapp} target="_blank" rel="noopener noreferrer" class="button button-small header-order">Pesan via WhatsApp <span aria-hidden="true">↗</span></a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Buka menu navigasi"><span></span><span></span></button>
+      </div>
+      <nav id="mobile-nav" aria-label="Navigasi ponsel" hidden>
+        <a href="#menu">Menu Kami <span>01</span></a><a href="#journey">Cerita Dapur <span>02</span></a><a href="#cara-pesan">Cara Pesan <span>03</span></a>
+        <a href={whatsapp} target="_blank" rel="noopener noreferrer">Pesan via WhatsApp ↗</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section id="home" class="hero relative isolate overflow-hidden" aria-labelledby="hero-title">
+        <div class="hero-photo" aria-hidden="true"><Image src={images["hero"]} alt="" width={1672} widths={[640, 960, 1280, 1672]} sizes="100vw" format="webp" quality={80} loading="eager" fetchpriority="high" /></div>
+        <div class="hero-wash" aria-hidden="true"></div>
+        <div class="hero-copy relative z-10 text-center" data-anchor-focus tabindex="-1">
+          <p class="eyebrow hero-enter">DARI DAPUR KECIL DI MALANG <span aria-hidden="true">✧</span></p>
+          <h1 id="hero-title" class="hero-enter">Dari dapur rumah,<br /><em>untuk hari manismu.</em></h1>
+          <p class="hero-sub hero-enter">Roti, kue, dan camilan rumahan.<br class="mobile-break" /> Dibikin dengan hati, dinikmati bersama.</p>
+          <div class="hero-actions hero-enter flex items-center justify-center gap-7">
+            <a href="#menu" class="button">Lihat Menu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6" /></svg></a>
+            <a href={whatsapp} target="_blank" rel="noopener noreferrer" class="text-link">Pesan via WhatsApp <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="hero-note" aria-hidden="true">dibikin<br />sepenuh hati <svg viewBox="0 0 80 60" fill="none"><path d="M55 4Q15 8 19 45m-8-8 8 10 9-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg></div>
+        <a class="hero-scroll" href="#journey" aria-label="Ikuti cerita dari dapur ke meja"><span>DARI DAPUR, KE MEJAMU</span><span aria-hidden="true">↓</span></a>
+      </section>
+
+      <div class="goodness-strip" aria-label="Homemade dari Malang, manis dan gurih untuk dinikmati bersama">
+        <div class="strip-track" aria-hidden="true">{[0,1,2,3].map(()=> <span>HOMEMADE DARI MALANG <i>✧</i> MANIS & GURIH <i>✧</i> TEMAN WAKTU BERSAMA <i>✧</i></span>)}</div>
+      </div>
+
+      <section id="journey" class="journey" aria-labelledby="journey-title">
+        <div class="journey-stage">
+          <div class="wrap journey-inner" data-anchor-focus tabindex="-1">
+            <div class="journey-heading">
+              <div><p class="eyebrow">SEBUAH CERITA KECIL DARI HAP.PYBAKE</p><h2 id="journey-title">Dari dapur, <em>sampai ke mejamu.</em></h2></div>
+              <p class="journey-hint"><span aria-hidden="true">↓</span> Pelan-pelan saja.<br />Ada cerita di setiap rasanya.</p>
+            </div>
+            <div class="journey-panels">
+              <article class="journey-panel" aria-labelledby="journey-dapur">
+                <div class="journey-photo"><Image src={images["journey-dapur"]} alt="Ilustrasi meja dapur rumahan dengan adonan, rolling pin, dan persiapan bolen" width={960} widths={[480, 720, 960]} sizes="(min-width: 1024px) 40vw, (min-width: 600px) 50vw, 100vw" format="webp" quality={80} loading="lazy" decoding="async" /><span class="journey-photo-note">01 / tempat semuanya bermula</span></div>
+                <div class="journey-copy"><p class="eyebrow"><span class="journey-chapter">01</span> DARI DAPUR RUMAH</p><h3 id="journey-dapur">Bahagianya dimulai<br /><em>dari dapur kecil.</em></h3><p>Adonan, sedikit tepung di meja, dan waktu untuk membuat sesuatu yang istimewa. Begitu cerita kecil ini dimulai.</p><span class="journey-handwriting" aria-hidden="true">selalu ada cerita sebelum rasa ♡</span></div>
+              </article>
+              <article class="journey-panel" aria-labelledby="journey-dibuat">
+                <div class="journey-photo"><Image src={images["roti-abon"]} alt="Ilustrasi detail roti abon dengan permukaan keemasan dan taburan abon" width={960} widths={[480, 720, 960]} sizes="(min-width: 1024px) 40vw, (min-width: 600px) 50vw, 100vw" format="webp" quality={80} loading="lazy" decoding="async" /><span class="journey-photo-note">02 / perhatian dalam setiap detail</span></div>
+                <div class="journey-copy"><p class="eyebrow"><span class="journey-chapter">02</span> DIBIKIN SEPENUH HATI</p><h3 id="journey-dibuat">Ada perhatian<br /><em>di setiap gigitan.</em></h3><p>Dari yang gurih bertabur abon sampai yang manis berlapis cokelat. Hal-hal kecil yang bikin waktu ngemil terasa lebih menyenangkan.</p><span class="journey-handwriting" aria-hidden="true">yang sederhana, yang ngangenin.</span></div>
+              </article>
+              <article class="journey-panel" aria-labelledby="journey-dinikmati">
+                <div class="journey-photo"><Image src={images["journey-bersama"]} alt="Ilustrasi sajian roti dan kue rumahan di meja bersama dua cangkir teh" width={960} widths={[480, 720, 960]} sizes="(min-width: 1024px) 40vw, (min-width: 600px) 50vw, 100vw" format="webp" quality={80} loading="lazy" decoding="async" /><span class="journey-photo-note">03 / bagian terbaiknya: berbagi</span></div>
+                <div class="journey-copy"><p class="eyebrow"><span class="journey-chapter">03</span> UNTUK DINIKMATI BERSAMA</p><h3 id="journey-dinikmati">Sampai di meja.<br /><em>Jadi cerita bersama.</em></h3><p>Secangkir teh, obrolan yang panjang, dan camilan di tengah meja. Sekarang, tinggal pilih teman untuk hari manismu.</p><span class="journey-handwriting" aria-hidden="true">satu buat kamu, satu buat yang tersayang.</span></div>
+              </article>
+            </div>
+            <div class="journey-footer">
+              <ol class="journey-steps" aria-label="Bab perjalanan rasa"><li class="is-current" aria-current="step"><span>01</span> Dapur</li><li><span>02</span> Dibuat</li><li><span>03</span> Dinikmati</li></ol>
+              <a href="#menu" class="journey-skip">Langsung pilih menu <span aria-hidden="true">↘</span></a>
+            </div>
+          </div>
+          <div class="journey-progress" aria-hidden="true"><span></span></div>
+        </div>
+      </section>
+
+      <section id="menu" class="menu-section section-pad" aria-labelledby="menu-title">
+        <div class="wrap" data-anchor-focus tabindex="-1">
+          <div class="section-intro grid gap-6 md:grid-cols-2 md:items-end" data-reveal>
+            <div><p class="eyebrow">01 — PILIHAN DARI DAPUR KAMI</p><h2 id="menu-title">Mau yang manis,<br /><em>atau yang gurih?</em></h2></div>
+            <p class="intro-description">Buat teman ngeteh, suguhan di rumah, atau sekadar menyenangkan diri. Ada rasa untuk setiap suasana.</p>
+          </div>
+          <div class="menu-tools" data-reveal>
+            <div class="filters flex flex-wrap gap-2" role="group" aria-label="Filter kategori menu">
+              {categories.map((category,index)=><button type="button" class:list={['filter',{'is-active': index===0}]} data-filter={category} aria-pressed={index===0}>{category}</button>)}
+            </div>
+            <span class="menu-count" aria-live="polite" aria-atomic="true">6 pilihan untukmu</span>
+          </div>
+          <div class="catalog-viewport"><div class="product-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-7 gap-y-12" id="product-grid">
+            {products.map((product,index)=><article class="product" data-category={product.category} data-reveal>
+              <a class="product-photo block overflow-hidden relative" href={whatsappLink(product.name)} target="_blank" rel="noopener noreferrer" aria-label={`Pesan ${product.name} melalui WhatsApp`}>
+                <div class="product-media"><Image src={images[product.image]} alt={`${product.name}, ilustrasi penyajian`} width={960} widths={[480, 720, 960]} sizes="(min-width: 1024px) 40vw, (min-width: 600px) 50vw, 100vw" format="webp" quality={80} loading="lazy" decoding="async" /></div>
+                <span class="product-tag">{product.category}</span><span class="photo-arrow" aria-hidden="true">↗</span>
+              </a>
+              <div class="product-caption"><p class="product-note">{product.note}</p><div class="flex items-center justify-between gap-3"><h3>{product.name}</h3><span class="product-number" aria-hidden="true">0{index+1}</span></div><p class="product-description">{product.description}</p><a class="product-order" href={whatsappLink(product.name)} target="_blank" rel="noopener noreferrer" aria-label={`Tanyakan ketersediaan ${product.name} melalui WhatsApp`}>Pesan menu ini <span aria-hidden="true">↗</span></a></div>
+            </article>)}
+          </div></div>
+          <div class="catalog-scroll-hint" aria-hidden="true"><span>SCROLL UNTUK MENJELAJAHI RASA</span><div><span></span></div><span>01 — 06 <i>→</i></span></div>
+          <p class="menu-footnote" data-reveal><span aria-hidden="true">✧</span> Foto merupakan ilustrasi penyajian. Klik foto menu untuk tanya harga dan ketersediaannya lewat WhatsApp.</p>
+        </div>
+      </section>
+
+      <section id="cerita" class="story-section section-pad overflow-hidden" aria-labelledby="story-title">
+        <div class="wrap story-layout grid md:grid-cols-2 items-center" data-anchor-focus tabindex="-1">
+          <div class="story-art" data-reveal>
+            <figure class="story-photo"><Image src={images["bolen"]} alt="Ilustrasi bolen keemasan di atas kertas panggang" width={960} widths={[480, 720, 960]} sizes="(min-width: 1024px) 40vw, (min-width: 600px) 50vw, 100vw" format="webp" quality={80} loading="lazy" decoding="async" /><figcaption>Catatan kecil dari dapur hap.pybake.</figcaption></figure>
+            <div class="homemade-seal" aria-hidden="true"><span>FROM OUR</span><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 22 24 8l16 14M13 19v21h22V19M20 40V27h8v13"/><path d="M19 19q5 6 10 0"/></svg><span>HOME, WITH LOVE</span></div>
+          </div>
+          <div class="story-copy" data-reveal>
+            <p class="eyebrow">02 — CERITA DAPUR</p><h2 id="story-title">Bukan sekadar kue.<br /><em>Sepotong rasa rumah.</em></h2>
+            <p>Ada rasa akrab dalam camilan dari dapur rumah. Dari roti abon yang gurih sampai kue-kue manis, pilihan hap.pybake bisa menemani jeda dan waktu bersama di meja.</p>
+            <blockquote>“Baking pas libur aja.” <span>— begitu kata bio Instagram kami ☺</span></blockquote>
+            <p>Kalau ada yang ingin kamu pesan, sapa kami lewat WhatsApp ya. Kita cari tahu menu dan waktu yang pas buatmu.</p>
+            <a href={instagram} target="_blank" rel="noopener noreferrer" class="text-link">Intip cerita dapur di Instagram <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section id="cara-pesan" class="order-section section-pad" aria-labelledby="order-title">
+        <div class="wrap" data-anchor-focus tabindex="-1">
+          <div class="text-center" data-reveal><p class="eyebrow">03 — DARI DAPUR, KE HARIMU</p><h2 id="order-title">Sudah ketemu <em>yang kamu suka</em></h2><p class="order-intro">Klik menu pilihanmu, lalu lanjutkan pesanan lewat WhatsApp.</p></div>
+          <div class="steps grid gap-10 md:grid-cols-3">
+            {[
+              {n:'01',title:'Pilih menu favoritmu',description:'Klik foto menu yang kamu suka. Pesan awalnya sudah kami siapkan.',symbol:'✧'},
+              {n:'02',title:'Lanjutkan di WhatsApp',description:'Cek pesan yang sudah terisi, lalu tambahkan jumlah dan tanggal yang kamu inginkan.',symbol:'♡'},
+              {n:'03',title:'Konfirmasi bersama',description:'Kita bahas ketersediaan, harga, jadwal, dan cara menerima pesanan.',symbol:'⌁'},
+            ].map(step=><div class="step" data-reveal><span class="step-line" aria-hidden="true"></span><div class="step-top"><span>{step.n}</span><span class="step-symbol" aria-hidden="true">{step.symbol}</span></div><h3>{step.title}</h3><p>{step.description}</p></div>)}
+          </div>
+          <div class="order-note" data-reveal><span aria-hidden="true">☼</span><p>Setiap menu mengikuti jadwal dapur. Tanyakan ketersediaan sebelum menentukan tanggal, ya.</p></div>
+        </div>
+      </section>
+
+      <section class="closing-section relative overflow-hidden" aria-labelledby="closing-title">
+        <div class="closing-surface" aria-hidden="true"></div>
+        <div class="closing-bread" aria-hidden="true"><BreadSketch /></div>
+        <div class="wrap relative" data-reveal><p class="eyebrow">SEDIKIT MANIS, BANYAK BAHAGIA</p><h2 id="closing-title">Hari biasa juga layak<br /><em>ditemani yang istimewa.</em></h2><a class="button button-cream" href={whatsapp} target="_blank" rel="noopener noreferrer">Pesan lewat WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14" /></svg></a><p class="closing-small">Dari Malang, dengan sepenuh hati.</p></div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="wrap footer-top flex flex-wrap justify-between gap-8"><a href="#home" class="wordmark" aria-label="hap.pybake, kembali ke awal">hap.pybake<span class="brand-smile" aria-hidden="true"></span></a><p>Roti, kue, dan cerita kecil<br />dari dapur rumah.</p><div class="footer-contacts flex flex-col items-start gap-3"><a class="text-link" href={whatsapp} target="_blank" rel="noopener noreferrer" aria-label={`Hubungi hap.pybake melalui WhatsApp ${whatsappNumber}`}>WhatsApp {whatsappNumber} <span aria-hidden="true">↗</span></a><a class="text-link" href={instagram} target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true">↗</span></a></div></div><div class="footer-signature" aria-hidden="true"><span>hap.pybake</span></div><div class="wrap footer-bottom flex flex-wrap justify-between gap-3"><small>© 2025 hap.pybake. Homemade di Malang.</small><a href="#home">Kembali ke atas ↑</a></div></footer>
+    <script src="../scripts/main.ts"></script>
+  </body>
+</html>
